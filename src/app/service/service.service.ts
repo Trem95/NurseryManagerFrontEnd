@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ServiceService {
 
-  BASE_URL: string = ''
+  BASE_URL: string = 'http://localhost:8081'
 
   constructor() { }
 
