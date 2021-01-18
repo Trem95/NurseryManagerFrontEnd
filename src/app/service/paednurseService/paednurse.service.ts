@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { createPaednurse, paednurse } from 'src/app/entitiesModels/entitiesModels';
 import { ServiceService } from '../service.service';
@@ -8,16 +8,19 @@ import { ServiceService } from '../service.service';
 })
 export class PaednurseService {
   url : string;
+
   constructor(
     private httpClient : HttpClient,
     private service : ServiceService
   ) 
   {
     this.url = this.service.BASE_URL + '/paednurse'
+
   }
 
   getListPaednurse(){
-    return this.httpClient.get(this.url)
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.get(this.url,{headers})
   }
 
   getPaednurse(id : number){

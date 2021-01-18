@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { paednurse } from '../entitiesModels/entitiesModels';
 import { PaednurseService } from '../service/paednurseService/paednurse.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class PaednurseComponent implements OnInit {
   ngOnInit(): void {
     this.service.getListPaednurse().toPromise()
     .then(data => {
+      console.log(data)
       this.listPaednurse = data
     })
     .catch(err => {

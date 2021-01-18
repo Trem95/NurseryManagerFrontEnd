@@ -8,11 +8,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of listPaednurse">
-        <td>{{ item.name }}</td>
-        <td>{{ item.login }}</td>
-        <td><a class="btn btn-primary" (click)="updateChambre(item.id)" routerLink="update/{{item.id}}">Modifier</a></td>
-        <td><a class="btn btn-danger "(click)="deleteChambre(item.id)" routerLink="delete/{{item.id}}">Supprimer</a></td>
+      <tr *ngFor="let paednurse of listPaednurse">
+        <td>{{ paednurse.name }}</td>
+        <td>{{ paednurse.login }}</td>
+        <td><a class="btn btn-danger "(click)="deletePaednurse(paednurse)" routerLink="delete/{{paednurse}}">Supprimer</a></td>
       </tr>
     </tbody>
   </table>
