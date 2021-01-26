@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  public paednurse = JSON.parse(localStorage.getItem("paednurse"))
   listNavItem: Array<navItem> = 
   [
     {
       name: 'Puéricultrice',
       link: 'paednurse'
+    },
+    {
+      name : 'Se connecter',
+      link : 'login'
     }
+
   ];
 
   constructor() { }

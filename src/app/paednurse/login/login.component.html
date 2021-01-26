@@ -1,0 +1,16 @@
+<form #f="ngForm" (ngSubmit)="confirmLogin(f)" novalidate>
+    <input 
+        #model="ngModel"
+        ngModel
+        type="text"
+        name="loginInput"
+    >
+    <br>
+    <input 
+        ngModel
+        type="password"
+        name="pwdInput"
+    >
+
+    <button type="submit">Confirmer</button>
+</form>
