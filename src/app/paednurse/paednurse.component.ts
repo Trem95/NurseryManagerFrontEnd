@@ -14,7 +14,7 @@ export class PaednurseComponent implements OnInit {
     private service : PaednurseService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.service.getListPaednurse().toPromise()
     .then(data => {
       console.log(data)
@@ -33,9 +33,20 @@ export class PaednurseComponent implements OnInit {
     .catch(err => {
       console.log('error delete Paednurse Component => ',err)
     })
-
     window.location.reload();
   }
+
+  updatePaednurse(paednurse : paednurse){
+    this.service.updatePaednurse(paednurse).toPromise()
+    .then(data =>{
+      console.log('data update Paednurse Component => ', data)
+    })
+    .catch(err => {
+      console.log('error update Paednurse Component => ', err)
+    })
+  }
+
+ 
 
 
 }

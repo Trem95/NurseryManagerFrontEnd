@@ -1,18 +1,25 @@
 <div class="container">
-  <h2 class="jumbotron bg-dark mt-5 text-light text-center"> Puéricultrice </h2>
-  <table class="table table-striped table-dark">
+  <div class="page-header">
+    <br>
+    <h4 class=" text-dark text-center"> Puéricultrice </h4>
+    <br>
+  </div>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Nom</th>
         <th scope="col">Login</th>
+        <th scope="col">Option</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let paednurse of listPaednurse">
+      <tr *ngFor="let paednurse of listPaednurse.list">
         <td>{{ paednurse.name }}</td>
         <td>{{ paednurse.login }}</td>
-        <td><a class="btn btn-danger "(click)="deletePaednurse(paednurse)" routerLink="delete/{{paednurse}}">Supprimer</a></td>
+        <td><a class="btn btn-danger "(click)="deletePaednurse(paednurse.id)" routerLink="delete/{{paednurse.id}}">Supprimer</a> 
+            <a class="btn btn-info" (click)="updatePaednurse(paednurse)" routerLink="update/{{paednurse}}">Modifier</a></td>
       </tr>
     </tbody>
   </table>
+  <a class="btn btn-primary" routerLink="create">Ajouter une Puréricultrice</a>
 </div>

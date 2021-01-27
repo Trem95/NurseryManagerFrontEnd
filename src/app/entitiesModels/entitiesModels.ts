@@ -62,6 +62,7 @@ export interface paednurse{
 export interface createPaednurse{
     login : string;
     name : string;
+    lastname : string;
     pwd : string;
 }
 

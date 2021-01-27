@@ -1,3 +1,36 @@
-<p>
-  create-paednurse works!
-</p>
+<form #f="ngForm" (ngSubmit)="createPaednurse(f)" novalidate>
+  <label for="nameInput">Prénom : </label>
+  <br>
+  <input 
+      #model="ngModel"
+      ngModel
+      type="text"
+      name="nameInput"
+  >
+  <br>
+  <label for="lastNameInput">Nom : </label>
+  <br>
+  <input 
+      ngModel
+      type="text"
+      name="lastNameInput"
+  >
+  <br>
+  <label for="pwdInput">Mot de passe : </label>
+  <br>
+  <input 
+      ngModel
+      type="password"
+      name="pwdInput"
+  >
+  <br>
+  <label for="pwdConfirmInput">Confirmer le mot de passe : </label>
+  <br>
+  <input 
+      ngModel
+      type="password"
+      name="pwdConfirmInput"
+  >
+  <br>
+  <button type="submit">Confirmer</button>
+</form>

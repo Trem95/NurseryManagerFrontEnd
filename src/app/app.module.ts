@@ -10,11 +10,13 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './paednurse/login/login.component';
 import { RegisterComponent } from './paednurse/register/register.component';
 import { EncrDecrService } from './service/encrDecrService/encr-decr.service';
+import { CreatePaednurseComponent } from './create/create-paednurse/create-paednurse.component';
 
 @NgModule({
   declarations: [			
     AppComponent,
       PaednurseComponent,
+      CreatePaednurseComponent,
       NavbarComponent,
       LoginComponent,
       RegisterComponent

@@ -24,18 +24,21 @@ export class PaednurseService {
   }
 
   getPaednurse(id : number){
-    return this.httpClient.get(this.url + '/'+id)
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.get(this.url + '/'+id,{headers : headers, responseType : 'type' as 'json'})
   }
 
   createPaednurse(paednurse : createPaednurse){
-    return this.httpClient.post(this.url +'/create', paednurse, {responseType : 'type' as 'json'})
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.post(this.url +'/create', paednurse, {headers : headers, responseType: 'type' as 'json'})
   }
 
   updatePaednurse( paednurse : paednurse){
-    return this.httpClient.put(this.url + '/update', paednurse, { responseType : 'type' as 'json'})
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.put(this.url + '/update', paednurse,{headers : headers, responseType: 'type' as 'json'})
   }
 
   deletePaednurse(id : number){
-    return this.httpClient.delete(this.url + '/delete/' + id, {responseType: 'type' as 'json'})
-  }
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.delete(this.url + '/delete/' + id ,{​​ headers: headers, responseType: 'type' as 'json'}​​);}
 }
