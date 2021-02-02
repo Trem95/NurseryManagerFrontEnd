@@ -17,6 +17,10 @@ export class NavbarComponent implements OnInit {
     {
       name : 'Se connecter',
       link : 'login'
+    },
+    {
+      name: 'Enfants',
+      link: 'baby'
     }
 
   ];

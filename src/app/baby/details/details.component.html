@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="page-header"> 
+        <br>
+        <h3 class=" text-dark text-center"> {{ babyName }} </h3>
+        <br>
+    </div>
+</div>
+
+<div>
+    <caption><h4>Observations</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Heure</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Observation</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let obs of listObservation">
+                <td>{{obs.observationDate}}</td>
+                <td>{{obs.observationTime}}</td>
+                <td>{{obs.obsAuthor}}</td>
+                <td>{{obs.observation}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <caption><h4>Repas</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Date</th>
+            <th scope="col">Heure</th>
+            <th scope="col">Observation</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let meal of listMeal">
+                <td>{{meal.typeMeal}}</td>
+                <td>{{meal.mealDate}}</td>
+                <td>{{meal.mealTime}}</td>
+                <td>{{meal.mealObs}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

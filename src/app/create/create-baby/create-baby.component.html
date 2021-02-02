@@ -1,0 +1,13 @@
+<form #f="ngForm" (ngSubmit)="createBaby(f)" novalidate>
+    <label for="nameInput">Prénom : </label>
+    <br>
+    <input 
+        #model="ngModel"
+        ngModel
+        type="text"
+        name="nameInput"
+    >
+    <br>
+    <button type="submit">Confirmer</button>
+  </form>
+  

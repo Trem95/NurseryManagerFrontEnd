@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export interface baby {
     id: number;
     name: string;
@@ -10,6 +12,7 @@ export interface createBaby{
 export interface meal{
     id : number;
     mealDate: Date;
+    mealHour : Time
     mealObs: string;
     typeMeal : string;
     baby: baby;
@@ -17,6 +20,7 @@ export interface meal{
 
 export interface createMeal{
     mealDate : Date;
+    mealHour : Time;
     mealObs: string;
     typeMeal: string;
     baby: baby
@@ -25,15 +29,17 @@ export interface createMeal{
 export interface nap{
     id : number;
     napObs : string;
-    napTimeBegin : Date;
-    napTimeEnd: Date;
+    napDate : Date;
+    napTimeBegin : Time;
+    napTimeEnd: Time;
     baby : baby;
 }
 
 export interface createNap{
     napObs : string;
-    napTimeBegin : Date;
-    napTimeEnd: Date;
+    napDate : Date;
+    napTimeBegin : Time;
+    napTimeEnd: Time;
     baby : baby;
 }
 
@@ -42,13 +48,20 @@ export interface observation{
     obsAuthor : string;
     observation : string;
     observationDate : Date;
+    observationTime : Time;
     baby : baby;
+}
+
+export interface containerObs{
+    list : observation[]
+    count : number
 }
 
 export interface createObservation {
     obsAuthor : string;
     observation : string;
     observationDate : Date;
+    observationTime : Time;
     baby : baby;
 }
 
@@ -68,13 +81,15 @@ export interface createPaednurse{
 
 export interface timesheet{
     id : number;
-    arrivalTime : Date;
-    leaveTime : Date;
+    timesheetDate : Date;
+    arrivalTime : Time;
+    leaveTime : Time;
     baby : baby;
 }
 
 export interface createTimesheet{
-    arrivalTime : Date;
-    leaveTime : Date;
+    timesheetDate : Date;
+    arrivalTime : Time;
+    leaveTime : Time;
     baby : baby;
 }

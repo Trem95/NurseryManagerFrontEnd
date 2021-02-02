@@ -23,18 +23,22 @@ export class BabyService {
   }
 
   getBaby(id:number){
-    return this.httpClient.get(this.url + '/' + id)
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.get(this.url + '/' + id,{headers : headers})
   }
 
   createBaby(baby : createBaby){
-    return this.httpClient.post(this.url + '/create', baby, {responseType : 'type' as 'json'})
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.post(this.url + '/create', baby,{headers : headers, responseType : 'type' as 'json'})
   }
 
   updateBaby(baby : baby){
-    return this.httpClient.put(this.url +'/update', baby, {responseType: 'type' as 'json'})
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.put(this.url +'/update', baby, {headers : headers, responseType : 'type' as 'json'})
   }
   
   deleteBaby(id : number){
-    return this.httpClient.delete(this.url +'/delete' + id, {responseType : 'type' as 'json'})
+    let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
+    return this.httpClient.delete(this.url +'/delete/' + id, {headers : headers, responseType : 'type' as 'json'})
   }
 }

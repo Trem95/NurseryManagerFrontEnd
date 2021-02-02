@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="page-header">
+      <br>
+      <h4 class=" text-dark text-center"> Enfants </h4>
+      <br>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let baby of listBaby">
+          <td>{{ baby.name }}</td>
+          <td><a class="btn btn-info" (click)="getDetails(baby.id,baby.name)" routerLink="details/{{baby.id}}">Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <a class="btn btn-primary" routerLink="create">Ajouter un Enfant</a>
+  </div>
+  

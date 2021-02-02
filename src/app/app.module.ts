@@ -11,6 +11,9 @@ import { LoginComponent } from './paednurse/login/login.component';
 import { RegisterComponent } from './paednurse/register/register.component';
 import { EncrDecrService } from './service/encrDecrService/encr-decr.service';
 import { CreatePaednurseComponent } from './create/create-paednurse/create-paednurse.component';
+import { BabyComponent } from './baby/baby.component';
+import { CreateBabyComponent } from './create/create-baby/create-baby.component';
+import { DetailsComponent } from './baby/details/details.component';
 
 @NgModule({
   declarations: [			
@@ -19,7 +22,10 @@ import { CreatePaednurseComponent } from './create/create-paednurse/create-paedn
       CreatePaednurseComponent,
       NavbarComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      BabyComponent,
+      CreateBabyComponent,
+      DetailsComponent
    ],
   imports: [
     BrowserModule,

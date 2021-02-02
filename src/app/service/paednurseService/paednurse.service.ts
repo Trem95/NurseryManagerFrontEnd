@@ -25,7 +25,7 @@ export class PaednurseService {
 
   getPaednurse(id : number){
     let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
-    return this.httpClient.get(this.url + '/'+id,{headers : headers, responseType : 'type' as 'json'})
+    return this.httpClient.get(this.url + '/'+id,{headers : headers})
   }
 
   createPaednurse(paednurse : createPaednurse){

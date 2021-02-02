@@ -9,16 +9,17 @@ import { PaednurseService } from '../service/paednurseService/paednurse.service'
 })
 export class PaednurseComponent implements OnInit {
 
-  listPaednurse: any;
+  listPaednurse: Array<any>;
+  listVase: any
   constructor(
     private service : PaednurseService
   ) { }
 
   ngOnInit(): void { 
     this.service.getListPaednurse().toPromise()
-    .then(data => {
+    .then((data:any) => {
       console.log(data)
-      this.listPaednurse = data
+      this.listPaednurse = data.list
     })
     .catch(err => {
       console.log('error paednurse component => ', err)
