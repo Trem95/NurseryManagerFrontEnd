@@ -30,7 +30,7 @@ export class TimesheetService {
 
   getTimesheetByBaby(babyId:number){
     let headers = new HttpHeaders().set('Authorization','Basic dXNlcjpyb290')
-    return this.httpClient.get(this.url+'/'+babyId, {headers:headers})
+    return this.httpClient.get(this.url+'/baby/'+babyId, {headers:headers})
   }
 
   createTimesheet(timesheet:createTimesheet){

@@ -8,12 +8,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './paednurse/login/login.component';
-import { RegisterComponent } from './paednurse/register/register.component';
 import { EncrDecrService } from './service/encrDecrService/encr-decr.service';
 import { CreatePaednurseComponent } from './create/create-paednurse/create-paednurse.component';
 import { BabyComponent } from './baby/baby.component';
 import { CreateBabyComponent } from './create/create-baby/create-baby.component';
 import { DetailsComponent } from './baby/details/details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [			
@@ -22,10 +22,10 @@ import { DetailsComponent } from './baby/details/details.component';
       CreatePaednurseComponent,
       NavbarComponent,
       LoginComponent,
-      RegisterComponent,
       BabyComponent,
       CreateBabyComponent,
-      DetailsComponent
+      DetailsComponent,
+      HomeComponent
    ],
   imports: [
     BrowserModule,

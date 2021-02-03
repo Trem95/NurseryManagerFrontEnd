@@ -12,7 +12,7 @@ export interface createBaby{
 export interface meal{
     id : number;
     mealDate: Date;
-    mealHour : Time
+    mealHour : Date;
     mealObs: string;
     typeMeal : string;
     baby: baby;
@@ -20,7 +20,7 @@ export interface meal{
 
 export interface createMeal{
     mealDate : Date;
-    mealHour : Time;
+    mealHour : Date;
     mealObs: string;
     typeMeal: string;
     baby: baby
@@ -30,16 +30,16 @@ export interface nap{
     id : number;
     napObs : string;
     napDate : Date;
-    napTimeBegin : Time;
-    napTimeEnd: Time;
+    napTimeBegin : Date;
+    napTimeEnd: Date;
     baby : baby;
 }
 
 export interface createNap{
     napObs : string;
     napDate : Date;
-    napTimeBegin : Time;
-    napTimeEnd: Time;
+    napTimeBegin : Date;
+    napTimeEnd: Date;
     baby : baby;
 }
 
@@ -47,8 +47,8 @@ export interface observation{
     id : number;
     obsAuthor : string;
     observation : string;
-    observationDate : Date;
-    observationTime : Time;
+    observationDate : string;
+    observationTime : string;
     baby : baby;
 }
 
@@ -60,8 +60,8 @@ export interface containerObs{
 export interface createObservation {
     obsAuthor : string;
     observation : string;
-    observationDate : Date;
-    observationTime : Time;
+    observationDate : string;
+    observationTime : string;
     baby : baby;
 }
 
@@ -81,15 +81,15 @@ export interface createPaednurse{
 
 export interface timesheet{
     id : number;
-    timesheetDate : Date;
-    arrivalTime : Time;
-    leaveTime : Time;
+    timesheetDate : string;
+    arrivalTime : string;
+    leaveTime : string;
     baby : baby;
 }
 
 export interface createTimesheet{
-    timesheetDate : Date;
-    arrivalTime : Time;
-    leaveTime : Time;
+    timesheetDate : string;
+    arrivalTime : string;
+    leaveTime : string;
     baby : baby;
 }

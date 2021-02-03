@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { baby, observation, containerObs, meal, timesheet, nap } from 'src/app/entitiesModels/entitiesModels';
-import { BabyService } from 'src/app/service/babyService/baby.service';
+import { observation, meal, timesheet, nap } from 'src/app/entitiesModels/entitiesModels';
 import { MealService } from 'src/app/service/mealService/meal.service';
 import { NapService } from 'src/app/service/napService/nap.service';
 import { ObservationService } from 'src/app/service/observationService/observation.service';
@@ -28,7 +27,6 @@ export class DetailsComponent implements OnInit {
     private timesheetService: TimesheetService,
     private mealService: MealService,
     private napService : NapService,
-    private babyService : BabyService
   ) { }
 
   ngOnInit(): void {

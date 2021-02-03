@@ -17,7 +17,7 @@
         </tr>
         <tbody>
             <tr *ngFor="let obs of listObservation">
-                <td>{{obs.observationDate}}</td>
+                <td>{{obs.observationDate | date : 'dd/MM/yyyy'}}</td>
                 <td>{{obs.observationTime}}</td>
                 <td>{{obs.obsAuthor}}</td>
                 <td>{{obs.observation}}</td>
@@ -27,20 +27,58 @@
 </div>
 
 <div>
+    <caption><h4>Horaire</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Heure d'arrivée</th>
+            <th scope="col">Heure de départ</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let timesh of listTimesheet">
+                <td>{{timesh.timesheetDate | date :'dd/MM/yyyy'}}</td>
+                <td>{{timesh.arrivalTime}}</td>
+                <td>{{timesh.leaveTime}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
     <caption><h4>Repas</h4></caption>
     <table class="table table-striped">
         <tr>
-            <th scope="col">Type</th>
             <th scope="col">Date</th>
+            <th scope="col">Type</th>
             <th scope="col">Heure</th>
             <th scope="col">Observation</th>
         </tr>
         <tbody>
             <tr *ngFor="let meal of listMeal">
+                <td>{{meal.mealDate | date:'dd/MM/yyyy' }}</td>
                 <td>{{meal.typeMeal}}</td>
-                <td>{{meal.mealDate}}</td>
-                <td>{{meal.mealTime}}</td>
+                <td>{{meal.mealHour}}</td>
                 <td>{{meal.mealObs}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <caption><h4>Sieste</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Debut</th>
+            <th scope="col">Fin</th>
+            <th scope="col">Observation</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let nap of listNap">
+                <td>{{nap.napDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{nap.napTimeBegin}}</td>
+                <td>{{nap.napTimeEnd}}</td>
+                <td>{{nap.napObs}}</td>
             </tr>
         </tbody>
     </table>

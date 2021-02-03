@@ -11,13 +11,18 @@ export class NavbarComponent implements OnInit {
   listNavItem: Array<navItem> = 
   [
     {
-      name: 'Puéricultrice',
-      link: 'paednurse'
+      name: 'Accueil',
+      link: 'home'
     },
     {
       name : 'Se connecter',
       link : 'login'
     },
+    {
+      name: 'Puéricultrice',
+      link: 'paednurse'
+    },
+    
     {
       name: 'Enfants',
       link: 'baby'

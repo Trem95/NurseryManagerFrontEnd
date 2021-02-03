@@ -6,8 +6,11 @@ import { CreateBabyComponent } from './create/create-baby/create-baby.component'
 import { CreatePaednurseComponent } from './create/create-paednurse/create-paednurse.component';
 import { LoginComponent } from './paednurse/login/login.component';
 import { PaednurseComponent } from './paednurse/paednurse.component';
+import {HomeComponent} from './home/home.component'
 
 const routes: Routes = [
+  {path: "", redirectTo : "home", pathMatch: 'full' },
+  {path: "home", component : HomeComponent},
   {path: "paednurse", component : PaednurseComponent},
   {path: "paednurse/delete/:id", pathMatch: 'full', redirectTo : "paednurse"},
   {path: "paednurse/update", pathMatch: 'full', redirectTo : "paednurse"},

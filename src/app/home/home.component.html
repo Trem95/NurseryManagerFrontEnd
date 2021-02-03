@@ -1,0 +1,51 @@
+<div>
+    <caption><h4>Enfants à enregistrer</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Observation</th>
+            
+        </tr>
+        <tbody>
+            <tr *ngFor="let baby of listBabyToArrive">
+                <td>{{baby.name}}</td>
+                    <td>
+                        <form #f="ngForm" (ngSubmit)="addBabyArrive(f,baby)" novalidate>
+                            Parent : 
+                            <input
+                            #model="ngModel"
+                            ngModel
+                            type="text"
+                            name="obsAuthor"
+                            >
+                            Observation
+                            <input
+                            ngModel
+                            type="text"
+                            name="obsInfo"
+                            >
+                            <button class="btn btn-info" type="submit">Ajouter</button>
+                        </form>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <caption><h4>Enfants déjà arrivée</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Options</th>
+            
+        </tr>
+        <tbody>
+            <tr *ngFor="let baby of listBabyArrived">
+                <td>{{baby.name}}</td>
+                <td><a class="btn btn-info">Options</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
