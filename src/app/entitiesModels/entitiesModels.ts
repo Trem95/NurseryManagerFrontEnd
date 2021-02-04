@@ -11,16 +11,16 @@ export interface createBaby{
 
 export interface meal{
     id : number;
-    mealDate: Date;
-    mealHour : Date;
+    mealDate: string;
+    mealTime : string;
     mealObs: string;
     typeMeal : string;
     baby: baby;
 }
 
 export interface createMeal{
-    mealDate : Date;
-    mealHour : Date;
+    mealDate : string;
+    mealTime : string;
     mealObs: string;
     typeMeal: string;
     baby: baby
@@ -29,17 +29,17 @@ export interface createMeal{
 export interface nap{
     id : number;
     napObs : string;
-    napDate : Date;
-    napTimeBegin : Date;
-    napTimeEnd: Date;
+    napDate : string;
+    napTimeBegin : string;
+    napTimeEnd: string;
     baby : baby;
 }
 
 export interface createNap{
     napObs : string;
-    napDate : Date;
-    napTimeBegin : Date;
-    napTimeEnd: Date;
+    napDate : string;
+    napTimeBegin : string;
+    napTimeEnd: string;
     baby : baby;
 }
 

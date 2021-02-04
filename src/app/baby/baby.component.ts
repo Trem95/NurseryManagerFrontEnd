@@ -16,10 +16,9 @@ export class BabyComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getListBaby().toPromise()
-    .then(data => {
-      
-      this.listVase = data
-      this.listBaby = this.listVase.list
+    .then((data:any) => {
+      this.listBaby = data.list
+      console.log(this.listBaby)
     
     })
     .catch(err => {

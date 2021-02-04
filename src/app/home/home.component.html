@@ -1,5 +1,5 @@
-<div>
-    <caption><h4>Enfants à enregistrer</h4></caption>
+<div class="container">
+    <caption><h4 class=" text-dark text-center">Enfants à enregistrer</h4></caption>
     <table class="table table-striped">
         <tr>
             <th scope="col">Nom</th>
@@ -24,6 +24,7 @@
                             type="text"
                             name="obsInfo"
                             >
+                            &nbsp;
                             <button class="btn btn-info" type="submit">Ajouter</button>
                         </form>
                     </td>
@@ -33,18 +34,75 @@
 </div>
 
 
-<div>
-    <caption><h4>Enfants déjà arrivée</h4></caption>
+<div class="container">
+    <caption><h4 class=" text-dark text-center">Enfants déjà arrivée</h4></caption>
     <table class="table table-striped">
         <tr>
             <th scope="col">Nom</th>
+            <th scope="col">Boutons</th>
             <th scope="col">Options</th>
+            
             
         </tr>
         <tbody>
             <tr *ngFor="let baby of listBabyArrived">
                 <td>{{baby.name}}</td>
-                <td><a class="btn btn-info">Options</a></td>
+                <td class="baby_{{baby.id}}">
+                    <a class="btn btn-info" (click)="showObs(baby.id)">Observations</a>&nbsp;
+                    <a class="btn btn-primary" (click)="showMeal(baby.id)">Repas</a>&nbsp;
+                    <a class="btn btn-secondary" (click)="napVerif(baby)">Sieste</a>&nbsp;
+                    <a class="btn btn-danger" (click)="endTimesheet(baby)">Fin de journée</a>
+                </td>
+                <td  *ngIf="boolObs && baby.id.toString() === this.babyChosen">
+                    <form #f="ngForm" (ngSubmit)="addObs(f,baby)" novalidate>
+                        Observateur : 
+                        <input
+                        #model="ngModel"
+                        ngModel
+                        type="text"
+                        name="obsAuthor"
+                        >
+                        Observation :
+                        <input
+                        ngModel
+                        type="text"
+                        name="obsInfo"
+                        >
+                        &nbsp;
+                        <button class="btn btn-info" type="submit">Ajouter</button>
+                    </form>
+                </td>
+                <td *ngIf="boolMeal && baby.id.toString() === this.babyChosen">
+                    <form #f="ngForm" (ngSubmit)="addMeal(f,baby)" novalidate>
+                        Type de Repas 
+                        <input
+                        #model="ngModel"
+                        ngModel
+                        type="text"
+                        name="typeMeal"
+                        >
+                        Observation
+                        <input
+                        ngModel
+                        type="text"
+                        name="obsMeal"
+                        >
+                        <button class="btn btn-info" type="submit">Ajouter</button>
+                    </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <caption><h4 class=" text-dark text-center">Enfants déjà parti</h4></caption>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Nom</th>
+        </tr>
+        <tbody>
+            <tr *ngFor="let baby of listBabyLeaved">
+                <td>{{baby.name}}</td>
             </tr>
         </tbody>
     </table>

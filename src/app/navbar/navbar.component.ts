@@ -11,11 +11,7 @@ export class NavbarComponent implements OnInit {
   listNavItem: Array<navItem> = 
   [
     {
-      name: 'Accueil',
-      link: 'home'
-    },
-    {
-      name : 'Se connecter',
+      name : 'Connection',
       link : 'login'
     },
     {

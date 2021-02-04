@@ -57,7 +57,7 @@
             <tr *ngFor="let meal of listMeal">
                 <td>{{meal.mealDate | date:'dd/MM/yyyy' }}</td>
                 <td>{{meal.typeMeal}}</td>
-                <td>{{meal.mealHour}}</td>
+                <td>{{meal.mealTime}}</td>
                 <td>{{meal.mealObs}}</td>
             </tr>
         </tbody>
@@ -71,14 +71,12 @@
             <th scope="col">Date</th>
             <th scope="col">Debut</th>
             <th scope="col">Fin</th>
-            <th scope="col">Observation</th>
         </tr>
         <tbody>
             <tr *ngFor="let nap of listNap">
                 <td>{{nap.napDate | date:'dd/MM/yyyy' }}</td>
                 <td>{{nap.napTimeBegin}}</td>
                 <td>{{nap.napTimeEnd}}</td>
-                <td>{{nap.napObs}}</td>
             </tr>
         </tbody>
     </table>

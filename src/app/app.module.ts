@@ -14,6 +14,7 @@ import { BabyComponent } from './baby/baby.component';
 import { CreateBabyComponent } from './create/create-baby/create-baby.component';
 import { DetailsComponent } from './baby/details/details.component';
 import { HomeComponent } from './home/home.component';
+import { CreateObservationComponent } from './create/create-observation/create-observation.component';
 
 @NgModule({
   declarations: [			
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
       BabyComponent,
       CreateBabyComponent,
       DetailsComponent,
-      HomeComponent
+      HomeComponent,
+      CreateObservationComponent
    ],
   imports: [
     BrowserModule,
