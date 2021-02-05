@@ -1,7 +1,6 @@
 import { DatePipe, formatDate, Time} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-import { parse } from 'path';
 import { baby, createMeal, createNap, createObservation, createTimesheet, nap, timesheet } from '../entitiesModels/entitiesModels';
 import { BabyService } from '../service/babyService/baby.service';
 import { MealService } from '../service/mealService/meal.service';
@@ -37,6 +36,8 @@ export class HomeComponent implements OnInit {
   boolObs : boolean = false
   boolMeal : boolean = false
   boolNap : boolean = false
+  boolAddNap : boolean = false
+  boolEndNap : boolean = false
 
   constructor(
     private babyService : BabyService,
@@ -48,25 +49,29 @@ export class HomeComponent implements OnInit {
     
   ) { 
   }
+  //TODO Change get td id => verifShow()
+  //     Solve createNap problem
+  //     do login component
 
   ngOnInit(): void {
     this.babyService.getListBaby().subscribe(
       (data:any) =>{
-        console.log("Current Date => ",this.currentDate)
         data.list.forEach((baby:baby) => {
           this.timesheetService.getTimesheetByBaby(baby.id).toPromise()
           .then((timeshList:any) =>{
             this.timesheetToCompare = timeshList.list[timeshList.list.length-1]
             if (this.timesheetToCompare !== undefined) {
-              // console.log("TMS to Compare => ",this.timesheetToCompare.timesheetDate)
-              // console.log("CURRENT DATE => ",formatDate(this.currentDate,'yyyy-MM-dd','en'))
-              console.log("TEST => ",this.timesheetToCompare.arrivalTime)
-              if (this.datePipe.transform(this.timesheetToCompare.timesheetDate) !== this.datePipe.transform(this.currentDate)){
+              console.log("TIMESH TO COMPARE => ",formatDate(this.timesheetToCompare.timesheetDate,'yyyy-MM-dd','en'))
+              console.log("CURRENT DATE => ", formatDate(this.currentDate,'yyyy-MM-dd','en'))
+              console.log("HOUR TIMESH => ",this.timesheetToCompare.leaveTime)
+               let dateToCompare =  formatDate(this.timesheetToCompare.timesheetDate,'yyyy-MM-dd','en')
+               let currentDate = formatDate(this.currentDate,'yyyy-MM-dd','en')
+
+              if (dateToCompare !== currentDate ){
                 this.listBabyToArrive.push(baby)
               }
-              else if(this.datePipe.transform(this.timesheetToCompare.timesheetDate) === this.datePipe.transform(this.currentDate)
-                      && this.datePipe.transform(this.timesheetToCompare.leaveTime) !== null){
-                this.listBabyLeaved.push(baby)          
+              else if(dateToCompare === currentDate && this.timesheetToCompare.leaveTime !== null){
+                this.listBabyLeaved.push(baby)
               }
               else{
                 this.listBabyArrived.push(baby)
@@ -82,8 +87,9 @@ export class HomeComponent implements OnInit {
       });
 
     })
-    console.log(this.listBabyToArrive)
-    console.log(this.listBabyArrived)
+    console.log("TO ARRIVE => ",this.listBabyToArrive)
+    console.log("ARRIVED => ",this.listBabyArrived)
+    console.log("LEAVED => ",this.listBabyLeaved)
   }
 
   addBabyArrive(formulaire:NgForm, babyToAdd:baby){
@@ -103,8 +109,8 @@ export class HomeComponent implements OnInit {
       this.observationToAdd = {
         obsAuthor: formulaire.form.value.obsAuthor,
         observation: formulaire.form.value.obsInfo,
-        observationDate: this.dateToAdd,
-        observationTime : this.timeToAdd,
+        observationDate: this.dateToAdd.toString(),
+        observationTime : this.timeToAdd.toString(),
         baby: babyToAdd 
       }
       console.log(this.observationToAdd)
@@ -115,10 +121,17 @@ export class HomeComponent implements OnInit {
    }
 
    verifShow(babyId:number):boolean{
+     
     let dataId = document.querySelector(".baby_"+babyId.toString()).className
-    dataId = dataId[dataId.length-1] 
-    this.babyChosen = dataId
-    console.log("dataId => ",dataId)
+    let lastDigit = dataId[dataId.length-1]
+    console.log(dataId.length)
+    if (dataId.length === 7) {
+      lastDigit = dataId[dataId.length-2] + lastDigit
+    }
+    console.log("DATAID =>",lastDigit) 
+    this.babyChosen = lastDigit
+    console.log("TD ID => ",this.babyChosen)
+    console.log("BABY ID => ",babyId)
     if (this.babyChosen === babyId.toString()) {
       return true
     }
@@ -142,13 +155,27 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  showNap(babyId: number){
-    this.boolObs = false
-    this.boolMeal = false
-    if (this.verifShow(babyId)) {
-      this.boolNap = !this.boolNap
-    }
-  }
+  showNap(baby:baby){
+    this.boolMeal = false;
+    this.boolObs = false;
+    console.log( "VERIF SHOW => ",this.verifShow(baby.id))
+    if (this.verifShow(baby.id)) {
+       if (!this.napVerif(baby)) {
+        this.boolAddNap = !this.boolAddNap
+        console.log("BOOLEAN ADDNAP=> ",this.boolAddNap)
+        this.boolEndNap = false
+      }
+       else{
+         this.boolEndNap = !this.boolEndNap
+         console.log("BOOLEAN ENDNAP =>",this.boolEndNap)
+         this.boolAddNap = false
+       }
+     }
+     this.boolNap = !this.boolNap
+
+   }
+
+  
 
    addObs(formulaire: NgForm, babyToAdd:baby){
     this.getCurrentDate()
@@ -181,9 +208,7 @@ export class HomeComponent implements OnInit {
     
    }
 
-   addNap(formulaire: NgForm, babyToAdd: baby){
-     
-   }
+
 
    getCurrentDate(){
     this.currentDate = new Date()
@@ -214,7 +239,7 @@ export class HomeComponent implements OnInit {
       else{
         verif = false;
       }
-
+      console.log("BOOLEAN VERIF => ",verif)
       return verif
     })
     return null
@@ -227,15 +252,41 @@ export class HomeComponent implements OnInit {
          this.timesheetToUpdate = timeshlist.list[timeshlist.list.length-1]
          this.timesheetToUpdate = {
            timesheetDate : this.dateToAdd,
-           arrivalTime : this.timesheetToUpdate.arrivalTime,
+           arrivalTime : this.timesheetToUpdate.arrivalTime.toString(),
            leaveTime: this.timeToAdd,
            id : this.timesheetToUpdate.id,
            baby : baby 
          }
-
+        
          this.timesheetService.updateTimesheet(this.timesheetToUpdate).subscribe()
-         this.listBabyLeaved.push(baby)
-         window.location.reload
+         window.location.reload()
        })
    }
+
+   napStart(baby:baby){
+      this.getCurrentDate()
+      let nap : createNap = {
+        baby: baby,
+        napDate: this.dateToAdd.toString(),
+        napTimeBegin: this.timeToAdd.toString(),
+        napTimeEnd : null,
+        napObs : ""
+      }
+      console.log(nap)
+      this.napService.createNap(nap).subscribe()
+      this.boolNap = false
+   }
+
+   napEnd(baby:baby){
+    this.getCurrentDate()
+    let nap : nap
+    this.napService.getNapByBaby(baby.id).subscribe(
+      (data:any)=>{
+        nap = data.list[data.list.length-1]
+        console.log(nap)
+      }
+    )
+   }
+
+   
 }

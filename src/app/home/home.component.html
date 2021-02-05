@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="listBabyToArrive.length > 0">
     <caption><h4 class=" text-dark text-center">Enfants à enregistrer</h4></caption>
     <table class="table table-striped">
         <tr>
@@ -34,7 +34,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" *ngIf="listBabyArrived.length > 0">
     <caption><h4 class=" text-dark text-center">Enfants déjà arrivée</h4></caption>
     <table class="table table-striped">
         <tr>
@@ -50,8 +50,12 @@
                 <td class="baby_{{baby.id}}">
                     <a class="btn btn-info" (click)="showObs(baby.id)">Observations</a>&nbsp;
                     <a class="btn btn-primary" (click)="showMeal(baby.id)">Repas</a>&nbsp;
-                    <a class="btn btn-secondary" (click)="napVerif(baby)">Sieste</a>&nbsp;
+                    <a class="btn btn-secondary" (click)="showNap(baby)">Sieste</a>&nbsp;
                     <a class="btn btn-danger" (click)="endTimesheet(baby)">Fin de journée</a>
+                </td>
+                <td *ngIf="boolNap && baby.id.toString() === this.babyChosen">
+                    <a *ngIf="this.boolAddNap" class="btn btn-warning" (click)="napStart(baby)">Debut de Sieste</a>
+                    <a *ngIf="this.boolEndNap" class="btn btn-danger" (click)="napEnd(baby)">Fin de sieste</a>
                 </td>
                 <td  *ngIf="boolObs && baby.id.toString() === this.babyChosen">
                     <form #f="ngForm" (ngSubmit)="addObs(f,baby)" novalidate>
@@ -94,7 +98,7 @@
     </table>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="listBabyLeaved.length > 0">
     <caption><h4 class=" text-dark text-center">Enfants déjà parti</h4></caption>
     <table class="table table-striped">
         <tr>
